@@ -46,6 +46,9 @@ const COUNTRIES: Country[] = [
 	},
 ];
 
+Currrencies:[]=['INR','PKR','USD'];
+Currency:String;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
