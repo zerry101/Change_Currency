@@ -1,0 +1,10 @@
+{
+  "currency":[
+    {
+        "id":1,
+        "Product":"laptop",
+        "Value":20
+    }
+
+  ]
+}
