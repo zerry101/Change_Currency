@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import jsonSample from './db.json';
-
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 
 
@@ -46,8 +46,8 @@ const COUNTRIES: Country[] = [
 	},
 ];
 
-Currrencies:[]=['INR','PKR','USD'];
-Currency:String;
+// Currrencies:[];
+
 
 @Component({
   selector: 'app-root',
@@ -61,10 +61,37 @@ Currency:String;
 export class AppComponent {
 
 
+
+  dataForm: FormGroup<any>=new FormGroup({
+    Currency:new FormControl('')
+  });
   sampleData:json[]=jsonSample;
   title = 'Change_Currency';
   countries = COUNTRIES;
+  Currencies:String[]=['INR','PKR','USD','EUR','AUD','CAD','CNY','NZD','BZR','SEK','ZAR','HKD'];
+  Curr:any;
 
 
+  constructor(private fb:FormBuilder){}
+
+  ngOninit(){
+    this.setupForm();
+  }
+
+private setupForm():void{
+  this.dataForm=this.fb.group({
+    Currency:[""]
+  })
+}
+
+submit()
+{
+ this.Curr= this.dataForm.get('Currency')?.value;
+ console.log(this.Curr);
+
+
+}
+
+  // item=this.fb.array;
 
 }

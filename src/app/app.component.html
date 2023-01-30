@@ -11,7 +11,7 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form class="modal fade"  [formGroup]="dataForm"  (ngSubmit)="submit()" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -23,6 +23,13 @@
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown button
           </button>
+
+          <select formControlName="Currency" type="text" class="form-control" id="Currency" placeholder="Currency" >
+            <option value="" disabled>Choose Currency Code</option>
+            <option *ngFor="let Currency of Currencies" [ngValue]="Currency">
+                {{Currency}}
+            </option>
+          </select>
           <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -35,11 +42,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary" >Save changes</button>
       </div>
     </div>
   </div>
-</div>
+</form>
 <table class="table table-striped">
 
   <thead>
@@ -58,7 +65,7 @@
         {{sample.id}}
       </td>
       <td>{{ sample.Product }}</td>
-      <td>{{ sample.Value | currency:'INR'}}</td>
+      <td>{{ sample.Value | currency:Curr}}</td>
     </tr>
   </tbody>
 </table>
