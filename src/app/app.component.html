@@ -1,1 +1,40 @@
-<h1>ji</h1>
+<!-- <p>Table is just a mapping of objects to table rows with <code>ngFor</code></p>
+ -->
+
+
+
+<!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+
+<table class="table table-striped">
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <p>Hello, World!</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    </div>
+  </ng-template>
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Product</th>
+      <th scope="col">Value</th>
+      <!-- <th scope="col">Population</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sample of sampleData; index as i">
+      <!-- <th scope="row">{{ i }}</th> -->
+      <td>
+
+        {{sample.id}}
+      </td>
+      <td>{{ sample.Product }}</td>
+      <td>{{ sample.Value }}</td>
+    </tr>
+  </tbody>
+</table>

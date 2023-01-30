@@ -1,10 +1,27 @@
-{
-  "currency":[
-    {
-        "id":1,
-        "Product":"laptop",
-        "Value":20
-    }
-
-  ]
-}
+[
+  {
+    "id": 1,
+    "Product": "laptop",
+    "Value": 20
+  },
+  {
+    "id": 2,
+    "Product": "PC",
+    "Value": 30
+  },
+  {
+    "id": 3,
+    "Product": "Speakers",
+    "Value": 40
+  },
+  {
+    "id": 4,
+    "Product": "CPU",
+    "Value": 50
+  },
+  {
+    "id": 5,
+    "Product": "RAM",
+    "Value": 60
+  }
+]
