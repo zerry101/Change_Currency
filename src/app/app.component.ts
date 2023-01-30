@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import jsonSample from './db.json';
 
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 interface Country {
@@ -52,19 +52,12 @@ const COUNTRIES: Country[] = [
   styleUrls: ['./app.component.scss'],
   // providers:[]
   // standalone: true,
-  providers: [NgbModalConfig, NgbModal]
 })
 
 
 export class AppComponent {
-  constructor(config: NgbModalConfig, private modalService: NgbModal) {
-		// customize default values of modals used by this component tree
-		config.backdrop = 'static';
-		config.keyboard = false;
-	}
-  open(content:any) {
-		this.modalService.open(content);
-	}
+
+
   sampleData:json[]=jsonSample;
   title = 'Change_Currency';
   countries = COUNTRIES;
