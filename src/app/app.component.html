@@ -72,3 +72,12 @@
     </tr>
   </tbody>
 </table>
+
+{{products|async}}
+
+<div>
+  <div *ngFor="let obj of products|json">
+    {{obj}}
+   </div>
+</div>
+
