@@ -6,78 +6,54 @@
 <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
 
 <!-- Button trigger modal -->
-<button type="button" id="launchmodal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
 
-<!-- Modal -->
-<form class="modal fade" [formGroup]="dataForm" (ngSubmit)="submit()" id="exampleModal" tabindex="-1"
-  aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="dropdown">
-          <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown button
-          </button> -->
-
-          <select id="dropdownMenuButton1" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-            formControlName="Currency" type="button" class="form-control" >
-            <option value="" disabled>Choose Currency Code</option>
-            <option *ngFor="let Currency of Currencies" [ngValue]="Currency">
-              {{Currency}}
-            </option>
-          </select>
-          <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul> -->
-          <!-- <select [(ngModel)]="selectedValue">
-            <option *ngFor="let c of countries" [ngValue]="c">{{c.name}}</option>
-          </select> -->
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
-      </div>
-    </div>
-  </div>
-</form>
-<table class="table table-striped">
-
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">Product</th>
-      <th scope="col">Value</th>
-      <!-- <th scope="col">Population</th> -->
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let sample of sampleData; index as i">
-      <!-- <th scope="row">{{ i }}</th> -->
-      <td>
-
-        {{sample.id}}
-      </td>
-      <td>{{ sample.Product }}</td>
-      <td>{{ sample.Value | currency:Curr}}</td>
-    </tr>
-  </tbody>
-</table>
-
-{{products|async}}
-
-<div>
-  <div *ngFor="let obj of products|json">
-    {{obj}}
+<!-- <div>
+  <div *ngFor="let obj of products">
+    {{obj.name}}
    </div>
-</div>
+</div> -->
 
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid row">
+  <!-- <a class="navbar-brand  " href="#">Navbar</a> -->
+  <form [formGroup]="dataForm">
+    <!-- <div class="fluidcontainer-"> -->
+      <div class="row">
+
+          <! -- columns having unequal lengths -->
+          <! -- bg-success is background color -->
+          <div class="col-md " formControlName="from" >
+            <input type="text" placeholder="Enter Currency" >
+          </div>
+          <div class="col-md ">
+            <div class="row" >
+              <label for="" >From</label>
+              <select class="my-3" formControlName="oldCurrency">
+                <option value="" disabled >Old Country Code</option>
+                <option *ngFor="let code of Currencies" [value]="code">
+                  {{code}}
+                </option>
+                </select>
+
+                <label for="" >To</label>
+
+                <select class="my-3" formControlName="newCurrency">
+                  <option value="" disabled >New Country Code</option>
+                  <option *ngFor="let code of Currencies" [ngValue]="code">
+                    {{code}}
+                </select>
+
+
+              <button class="my-3" type="submit">Submit</button>
+            </div>
+          </div>
+          <div class="col-md " formControlName="To">
+            {{value}}
+          </div>
+      </div>
+  <!-- </div> -->
+  </form>
+
+
+
+</nav>
