@@ -23,7 +23,7 @@
 
         <! -- columns having unequal lengths -->
           <! -- bg-success is background color -->
-            <div class="col-md m-3 d-flex align-items-center justify-content-center" >
+            <div class="col-md m-3 d-flex align-items-center justify-content-center">
               <input type="number" placeholder="Enter Currency" formControlName="from"
                 [ngClass]="{'is-invalid':enterCurrencyValue?.touched && enterCurrencyValue?.invalid}">
             </div>
@@ -32,12 +32,12 @@
                 <label for="">From</label>
                 <div class="container">
                   <select class="my-3 mx-4 col-10 " formControlName="oldCurrency"
-                  [ngClass]="{'is-invalid':oldCurrencyCode?.touched && oldCurrencyCode?.invalid}">
-                  <option value="" disabled>Old Country Code</option>
-                  <option *ngFor="let code of Currencies" [value]="code">
-                    {{code}}
-                  </option>
-                </select>
+                    [ngClass]="{'is-invalid':oldCurrencyCode?.touched && oldCurrencyCode?.invalid}">
+                    <option value="" disabled>Old Country Code</option>
+                    <option *ngFor="let code of Currencies" [value]="code">
+                      {{code}}
+                    </option>
+                  </select>
 
                 </div>
 
@@ -46,23 +46,26 @@
                 <label for="">To</label>
 
                 <div class="container-fluid">
-                  <select class="my-3 mx-4 col-10 "
-                   formControlName="newCurrency"
-                  [ngClass]="{'is-invalid':newCurrencyCode?.touched && newCurrencyCode?.invalid}">
-                  <option value="" disabled>New Country Code</option>
-                  <option *ngFor="let code of Currencies" [ngValue]="code">
-                    {{code}}
-                </select>
+                  <select class="my-3 mx-4 col-10 " formControlName="newCurrency"
+                    [ngClass]="{'is-invalid':newCurrencyCode?.touched && newCurrencyCode?.invalid}">
+                    <option value="" disabled>New Country Code</option>
+                    <option *ngFor="let code of Currencies" [ngValue]="code">
+                      {{code}}
+                  </select>
 
                 </div>
+                <div class="align-items-center d-flex align-items-center justify-content-center">
 
-
-
-                <button class="my-3 mx-4 col-10" type="submit">Submit</button>
+                  <button class="my-3 bround" type="submit">Submit</button>
+                </div>
               </div>
             </div>
-            <div class="col-md m-3 align-items-center d-flex align-items-center justify-content-center  " formControlName="To">
-              {{value}}
+            <div class="col-md m-3 align-items-center d-flex align-items-center justify-content-center  "
+              formControlName="To">
+              converted value:
+              <p>
+                {{value|currency: newCurrencyCode}}
+              </p>
             </div>
       </div>
       <!-- </div> -->
