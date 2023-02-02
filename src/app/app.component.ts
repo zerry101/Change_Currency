@@ -1,6 +1,6 @@
 import { Component, OnInit, ɵɵtextInterpolate } from '@angular/core';
 import jsonSample from './db.json';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DesignutilityService } from './appServices/designutility.service';
 import { JsonPipe } from '@angular/common';
 
@@ -60,7 +60,11 @@ interface json {
 
 export class AppComponent implements OnInit {
   dataForm: FormGroup<any> = new FormGroup({
-    Currency: new FormControl('')
+    from: new FormControl(''),
+    oldCurrency: new FormControl(''),
+    newCurrncy: new FormControl(''),
+    To: new FormControl('')
+
   });
 
   sampleData: json[] = jsonSample;
@@ -78,9 +82,6 @@ export class AppComponent implements OnInit {
       console.log(this.products);
     })
 
-    this._msgService.exchangeRates({ have: 'USD', want: 'INR', amount: 100 }).subscribe(res => {
-      console.log(res);
-    })
 
   }
 
@@ -92,16 +93,59 @@ export class AppComponent implements OnInit {
 
   private setupForm(): void {
     this.dataForm = this.fb.group({
-      from:[""],
-      oldCurrency: [""],
-      newCurrency: [""],
-      To:[""]
+      from: ["",Validators.required],
+      oldCurrency: ["",Validators.required],
+      newCurrency: ["",Validators.required],
+      To: [""]
     })
   }
 
 
+  formSubmit() {
 
-  value:number=56;
+
+    if(this.dataForm.invalid)
+    {
+      this.dataForm.markAllAsTouched();
+      this.dataForm.markAsDirty();
+      return;
+    }
+
+
+
+
+    this._msgService.exchangeRates({ have: this.oldCurrencyCode, want:this.newCurrencyCode , amount: this.enterCurrencyValue }).subscribe(res => {
+      console.log(res);
+      this.value=res.new_amount;
+      // console.log(res.new_amount);
+    })
+    console.log(this.enterCurrencyValue);
+
+
+    console.log(this.dataForm.value);
+
+
+    console.log(this.oldCurrencyCode);
+
+    console.log();
+
+  }
+
+  value!: number ;
+
+
+  get enterCurrencyValue() { return this.dataForm.get('from')?.value };
+  get oldCurrencyCode() { return this.dataForm.get('oldCurrency')?.value };
+  get newCurrencyCode() { return this.dataForm.get('newCurrency')?.value };
+  // get resultCurrencyValue() { return this.dataForm.get('To')?.value };
+
+
+  amountValue:any =this.enterCurrencyValue;
+  haveValue:any=this.oldCurrencyCode;
+  wantValue:any=this.newCurrencyCode;
+
+
+
 
   // submit() {
   //   this.Curr = this.dataForm.get('Currency')?.value;
