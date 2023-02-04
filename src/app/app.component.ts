@@ -119,15 +119,15 @@ export class AppComponent implements OnInit {
       this.value=res.new_amount;
       // console.log(res.new_amount);
     })
-    console.log(this.enterCurrencyValue);
+    // console.log(this.enterCurrencyValue);
 
 
-    console.log(this.dataForm.value);
+    // console.log(this.dataForm.value);
 
 
-    console.log(this.oldCurrencyCode);
+    // console.log(this.oldCurrencyCode);
 
-    console.log();
+    // console.log();
 
   }
 
